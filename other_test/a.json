@@ -1,0 +1,20 @@
+{
+    "request": {
+      "mri_scan_request": {
+        "request_id": "f2c802d7fd2a4124930a7402bfca3a73",
+        "scan_id": "2021121914365777c0b4",
+        "sequence_name": "vtr_vte_seq",
+        "sequence_settings": "{\"dump_sid\": true, \"dump_rid\": false, \"scan_type\": \"basic\", \"tagged_data\": true, \"real_time\": true, \"total_scan_time\": 544290, \"recon_delay_time\": 60000.0}",
+        "patient_id": 319,
+        "check_id": "20211219143657defae8",
+        "parameters": "{\"version\": \"20210827\", \"tr\": [157.38, 157.38, 157.38, 157.38, 157.38, 157.38, 629.38, 629.38, 629.38, 629.38, 629.38, 629.38, 189.38, 189.38, 189.38, 189.38, 189.38, 189.38, 375.38, 375.38, 375.38, 375.38, 375.38, 375.38, 229.38, 229.38, 229.38, 229.38, 229.38, 229.38, 285.38, 285.38, 285.38, 285.38, 285.38, 285.38, 1004.265, 1004.265, 1004.265], \"te\": [650, 1054, 1304, 1497, 1659, 1800, 650, 1054, 1304, 1497, 1659, 1800, 650, 1054, 1304, 1497, 1659, 1800, 650, 1054, 1304, 1497, 1659, 1800, 650, 1054, 1304, 1497, 1659, 1800, 650, 1054, 1304, 1497, 1659, 1800, 1054, 1304, 1497], \"etl\": [160, 98, 79, 69, 62, 57, 160, 98, 79, 69, 62, 57, 160, 98, 79, 69, 62, 57, 160, 98, 79, 69, 62, 57, 160, 98, 79, 69, 62, 57, 160, 98, 79, 69, 62, 57, 98, 79, 69], \"num_samples\": 64, \"pre_discard\": 4, \"dw\": 2.0, \"rx_gain\": 20.0, \"view_avgs\": [36, 36, 36, 36, 36, 36, 37, 36, 36, 36, 36, 36, 37, 36, 36, 36, 36, 36, 37, 36, 36, 36, 36, 36, 37, 36, 36, 36, 36, 36, 37, 36, 36, 36, 36, 36, 37, 36, 36], \"frames\": 39, \"sat_flag\": true, \"qswitch_flag\": true, \"motion_insens_pulse_flag\": true, \"no_noise_sample\": 0, \"show_label\": [6, 12, 18, 24, 30, 36], \"total_scan_time\": 20.0, \"recon_time\": 60000.0, \"scan_mode\": \"basic\", \"live\": true, \"index\": [0, 1], \"figures_layout\": [1, 3], \"zero_order_corr_flag\": true, \"cadzow_flag\": true, \"weight_flag\": true, \"filter_type\": \"None\", \"integration_width\": 6, \"discard_num\": 3, \"ft1\": 100, \"ft2\": 80, \"fD\": 0.0002, \"npad\": 1024, \"water_t1\": [50, 500], \"water_t2\": [10, 200], \"water_D\": [0.0001, 0.05], \"water_a\": [1, 150], \"fat_a\": [1, 100], \"cvr\": [0.99, 1], \"residual_compensation\": [-1e-06, 1e-06]}",
+        "other_info": "{\"name\": \"MS\", \"age\": 20, \"height\": \"180.0\", \"weight\": \"70.0\", \"bmi\": \"21.60\", \"gender\": \"female\"}",
+        "execution_parameters": "",
+        "system_parameters": "",
+        "recon_parameters": "",
+        "sequence_version": "",
+        "client_id": "",
+        "machine_id": ""
+      }
+    }
+  }

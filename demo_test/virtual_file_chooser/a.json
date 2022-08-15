@@ -1,0 +1,34 @@
+{
+    "E:": {
+        "size": 30,
+        "files": {
+            "platform": {
+                "size": 30,
+                "files": {
+                    "config.txt": {
+                        "size": 30
+                    }
+                }
+            },
+            "new.txt": {
+                "size": 100
+            },
+            "plaform_0p5": {
+                "size": 50,
+                "files": {
+                    "requirement.txt": {
+                        "size": 50
+                    },
+                    "local": {
+                        "size":10000,
+                        "files": {
+                            "client.settings": {
+                                "size": 10000
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

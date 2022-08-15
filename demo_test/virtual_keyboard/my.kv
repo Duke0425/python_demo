@@ -1,0 +1,23 @@
+BoxLayout:
+    orientation: 'vertical'
+    Label:
+        size_hint: None,None
+        size: 100,100
+        font_size: 80
+        color: 0, 0, 0, 1
+        text: "TEXT AT TOP OF SCREEN"
+    TextInput:
+        id: t1
+        size_hint: None,None
+        size: 100,100
+        id: guess
+        multline: False
+        unfocus_on_touch: True
+    TextInput:
+        id: t2
+        size_hint: None,None
+        size: 50,200
+        multline:False
+        unfocus_on_touch: True
+        on_touch_down: root.ids.t1.focus = False
+    Widget:
