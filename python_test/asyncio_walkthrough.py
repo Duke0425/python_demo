@@ -21,6 +21,22 @@ import logging
                 - 协程是可以在运行时停止和恢复的函数
                 - Python中使用关键字 async def 定义.
                 - 和生成器类似, await(Python3.5之前使用yield from), 我们可以创建生成器完全相同的方式的创建协程
+                - 就像所有的生成器和迭代器拥有__iter__方法一样. 所有的协程拥有__await__方法允许协程在任何时候 await coro 时调用
+            在asyncio中除了协程函数, 还有两个重要的对象 tasks和futures
+            ? futures
+                - futures是一个有__await__方法的对象, 工作是保持一个肯定的状态和结果, 有以下三种状态
+                    1. PENDING - future 没有任何的结果和异常
+                    2. CANCELLED - future 已被取消: 使用fut.cancel()
+                    3. FINISHED - future 结束, 如果是结果使用 fut.set_result(). 如果是异常使用 fut.set_exception()
+                    - 返回的结果, 也是一个Python的对象, 而且拥有一个方法 add_done_callback(): 此方法允许在task结束的时候被调用
+                    (无论抛出异常还是正常结束)
+            ? Tasks
+                - 任务对象是特殊的future, 包裹着协程, 并与最内层和最外层协程进行通信, 每次协程await future时 future都会一路传回给任务
+                    (就像yield from 一样), 任务会接受到.
+                - 任务将会绑定到future, 它将会通过在future中调用add_done_callback(). 当future对象即将结束时, 无论是CANCELLED, 或者是
+                    Exception异常的抛出, 或者得到正常的结果. 任务的回调将会被调用, 将恢复存在
+
+                
 """
 
 def generator_simple():

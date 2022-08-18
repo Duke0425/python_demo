@@ -1,0 +1,57 @@
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+BoxLayout:
+    orientation: 'vertical'
+    Label:
+        text: "screenmanager"
+    Button:
+        text: "opent config popup"
+        on_release: app.OnOpenPopup(self)
+
+
+<ConfigScreenManager>:
+    id: screen_manager
+    transition: FadeTransition(duration=0.5)
+    LoginScreen:
+        id: login_screen
+        name: 'LoginScreen'
+        manager: screen_manager
+    MainScreen:
+        id: main_screen
+        name: 'MainScreen'
+        manager: screen_manager
+    ConfigureScreen:
+        id: configure_screen
+        name: 'ConfigureScreen'
+        manager: screen_manager
+
+<ConfigPopup>:
+    orientation: "horizontal"
+    BoxLayout:
+        orientation: "vertical"
+        Button:
+            text: "LoginScreen"
+            on_release: root.OnChangeScreen(self)
+        Button:
+            text: "MainScreen"
+            on_release: root.OnChangeScreen(self)
+        Button:
+            text: "ConfigureScreen"
+            on_release: root.OnChangeScreen(self)
+    ConfigScreenManager:
+        id: config_screen_manager
+
+
+<LoginScreen>:
+    Label:
+        text: "LoginScreen"
+
+
+<MainScreen>:
+    Label:
+        text: "MainScreen"
+
+
+<ConfigureScreen>:
+    Label:
+        text: "ConfigureScreen"
