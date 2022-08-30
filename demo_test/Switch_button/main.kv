@@ -1,0 +1,17 @@
+BaseBoxLayout:
+    orientation: 'horizontal'
+    canvas.before:
+        Color:
+            rgba: 0.2, 0.13, 0.13, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    ToggleButton:
+        id: button_a
+        state: 'down'
+        text: "AAA" if self.state == 'down' else ''
+        on_release: root.OnChangeButtonState(self, button_b)
+    ToggleButton:
+        id: button_b
+        text: "BBB" if self.state == 'down' else ''
+        on_release: root.OnChangeButtonState(self, button_a)
