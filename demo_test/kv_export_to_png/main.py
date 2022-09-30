@@ -27,7 +27,7 @@ class MainApp(App):
 
         imageRootPath = os.getcwd()
         logging.info(f"MainAPP: current path {imageRootPath}")
-        imageName = "image_222.jpg"
+        imageName = "image_222.bmp"
 
         imagePath = '/'.join([imageRootPath, imageName])
         aLabel.export_to_png(imagePath)

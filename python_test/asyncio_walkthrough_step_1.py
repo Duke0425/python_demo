@@ -1,9 +1,10 @@
 import logging
+import time
+import asyncio
+import datetime
 
 """
     * 一. 异步IO
-
-
     并发: 是指多个任务能够以重叠的方式运行(threading模块)
         - 用途: 处理IO密集型任务(主要等待输入和输出, 大量IO请求的任务类型)
         - 
@@ -72,6 +73,7 @@ class GenTest:
 
     def sendAndThrowMethodTest(self):
         # * 与生成器通信
+
         logging.info(f"sendAndThrowMethodTest: {next(self.myGen)}")
         logging.info(f"sendAndThrowMethodTest: {next(self.myGen)}")
         value = self.myGen.send("one")
@@ -88,11 +90,41 @@ class GenTest:
             logging.info(f"getGenRetunValue: Get the return value [{exec.value}] of generator")
 
 async def inner_simple():
-    return 1
+    logging.info("before wait")
+    await asyncio.sleep(1)
+    logging.info("after wait")
 
-async def outer_simple():
-    await inner_simple()
+async def say_later(aTime, aWord):
+    await asyncio.sleep(aTime)
+    logging.info(f"{aWord}")
 
+async def asyncio_example_one():
+    logging.info(f"started at {time.strftime('%X')}")
+    await say_later(2, 'ola')
+    await say_later(2, 'omego')
+    logging.info(f"finished at {time.strftime('%X')}")
+
+async def asyncio_example_two():
+    task_one = asyncio.create_task(
+        say_later(2, 'ola')
+    )
+    task_two = asyncio.create_task(
+        say_later(2, 'omego')
+    )
+
+    logging.info(f"started at {time.strftime('%X')}")
+    await task_one
+    await task_two
+    logging.info(f"finished at {time.strftime('%X')}")
+
+async def display_date():
+    loop = asyncio.get_event_loop()
+    endTime = loop.time() + 5.0
+    while True:
+        logging.info(datetime.datetime.now())
+        if (loop.time() + 1.0) >= endTime:
+            break
+        await asyncio.sleep(1)
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG, datefmt="%H:%M:%S")
@@ -103,5 +135,12 @@ if __name__ == '__main__':
     # genTest.getGenRetunValue()
 
     # TODO: yield from的使用
-    genTestSimple = GenTest(outer()) 
-    genTestSimple.sendAndThrowMethodTest()
+    # genTestSimple = GenTest(outer()) 
+    # genTestSimple.sendAndThrowMethodTest()
+
+    # TODO: 创建协程
+    # asyncio.run(inner_simple())
+    # asyncio.run(asyncio_example_one()) # 简单启动协程
+    # asyncio.run(asyncio_example_two()) # 创建两个协程任务启动
+    asyncio.run(display_date()) # 例: 通过asyncio.sleep 打印当前日期5秒
+    
