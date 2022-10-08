@@ -1,0 +1,10 @@
+PEP 8 exists to improve the readability of Python code. But why is readability so important? Why is writing readable code one of the guiding principles of the Python language?
+
+As Guido van Rossum said, “Code is read much more often than it is written.” You may spend a few minutes, or a whole day, writing a piece of code to process user authentication. Once you’ve written it, you’re never going to write it again. But you’ll definitely have to read it again. That piece of code might remain part of a project you’re working on. Every time you go back to that file, you’ll have to remember what that code does and why you wrote it, so readability matters.
+
+If you’re new to Python, it can be difficult to remember what a piece of code does a few days, or weeks, after you wrote it. If you follow PEP 8, you can be sure that you’ve named your variables well. You’ll know that you’ve added enough whitespace so it’s easier to follow logical steps in your code. You’ll also have commented your code well. All this will mean your code is more readable and easier to come back to. As a beginner, following the rules of PEP 8 can make learning Python a much more pleasant task.
+
+Following PEP 8 is particularly important if you’re looking for a development job. Writing clear, readable code shows professionalism. It’ll tell an employer that you understand how to structure your code well.
+
+If you have more experience writing Python code, then you may need to collaborate
+When you write Python code, you have to name a lot of things: variables, functions, classes, packages, and so on. Choosing sensible names will save you time and energy later. You’ll be able to figure out, from the name, what a certain variable, function, or class represents. You’ll also avoid using inappropriate names that might result in errors that are difficult to debug. with others. Writing readable code here is crucial. Other people, who may have never met you or seen your coding style before, will have to read and understand your code. Having guidelines that you follow and recognize will make it easier for others to read your code.

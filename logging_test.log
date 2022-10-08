@@ -1,0 +1,11 @@
+root - DEBUG - debug Message
+root - INFO - Debug Message
+root - WARNING - Debug Message
+root - ERROR - Debug Message
+root - CRITICAL - Debug Message
+root - ERROR - Atrribute Error
+Traceback (most recent call last):
+  File "e:\duke_summary_python\python_test\logging_module_use.py", line 44, in cus_logger_test
+    a = 1 / 0
+ZeroDivisionError: division by zero
+TEST - WARNING - warning message test

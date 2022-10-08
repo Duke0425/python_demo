@@ -1,0 +1,68 @@
+FileBoxLayout:
+    orientation: 'vertical'
+    BoxLayout:
+        orientation:'horizontal'
+        size_hint: 1, .5
+        Label:
+            text: "file list chooser"
+        Button:
+            text: "open chooser"
+            on_release: root.OnChooseFilesListMode()
+        Label:
+            text: "file icon chooser"
+        Button:
+            text: "open chooser"
+            on_release: root.OnChooseFilesIconMode()
+    BoxLayout:
+        orientation:'vertical'
+        size_hint: 1, .5
+        Label:
+            id: file_name
+            text:
+        Label:
+            id: file_content
+            text:
+
+<FileIconChooserBox>:
+    size: root.size
+    pos: root.pos
+    orientation: "vertical"
+    FileChooserIconView:
+        id: file_chooser
+        on_selection: text_input.text = self.selection and self.selection[0] or ''
+    TextInput:
+        id: text_input
+        size_hint_y: None
+        height: 30
+        multiline: False
+    BoxLayout:
+        size_hint_y: None
+        height: 30
+        Button:
+            text: "Cancel"
+            on_release: root.dispatch('on_cancel')
+        Button:
+            text: "Save"
+            on_release: root.OnSave(file_chooser.path, text_input.text)
+
+<FileListChooserBox>:
+    size: root.size
+    pos: root.pos
+    orientation: "vertical"
+    FileChooserListView:
+        id: file_chooser
+        on_selection: text_input.text = self.selection and self.selection[0] or ''
+    TextInput:
+        id: text_input
+        size_hint_y: None
+        height: 30
+        multiline: False
+    BoxLayout:
+        size_hint_y: None
+        height: 30
+        Button:
+            text: "Cancel"
+            on_release: root.dispatch('on_cancel')
+        Button:
+            text: "Save"
+            on_release: root.OnSave(file_chooser.path, text_input.text)
