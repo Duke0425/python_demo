@@ -1,7 +1,65 @@
 BaseBoxLayout:
+    orientation: "vertical"
+    BoxLayout:
+        size_hint: 1, .1
+    CusBoxLayout:
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: 1, 0.8, 0.8, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+<CusBoxLayout>:
+    size_hint: 1, None
+    height: 200
+    orientation: "vertical"
     canvas.before:
         Color:
-            rgba: 0.2, 0.13, 0.13, 1
+            rgba: 0.8, 0.8, 0.8, 1
         Rectangle:
             pos: self.pos
             size: self.size
+    BoxLayout:
+        size_hint: 1, .1
+        canvas.before:
+            Color:
+                rgba: 0, 0, 0, 1
+            Line:
+                width: 1
+                rectangle: self.x, self.y, self.width, self.height
+    ScrollView: 
+        BoxLayout:
+            id: list_box
+            orientation: "vertical"
+            size_hint_y: None
+            height: self.minimum_height
+            Button:
+                text: "head"
+                size_hint_y: None
+                height: 40
+            Button:
+                text: "test"
+                size_hint_y: None
+                height: 40
+            Button:
+                text: "test"
+                size_hint_y: None
+                height: 40
+            Button:
+                text: "test"
+                size_hint_y: None
+                height: 40
+            Button:
+                text: "test"
+                size_hint_y: None
+                height: 40
+            Button:
+                text: "test"
+                size_hint_y: None
+                height: 40
+            Button:
+                text: "tail"
+                size_hint_y: None
+                height: 40
