@@ -11,11 +11,32 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "args": [
-                "duke", "12",
-                "--simplemode",
-                "-o", "123",
-                "-s",
-                "-o", "456"
+                // "duke", "12",
+                // "--simplemode",
+                // "-o", "123",
+                // "-s",
+                // "-o", "456"
+                // "3", "2", "4",
+                // "--p", "10",
+                // "--c", "15"
+            ],
+            "justMyCode": false
+        },
+        {
+            "name": "JAVA: 当前文件",
+            "type": "java",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": [
+                // "duke", "12",
+                // "--simplemode",
+                // "-o", "123",
+                // "-s",
+                // "-o", "456"
+                // "3", "2", "4",
+                "--p", "10",
+                "--c", "15"
             ],
             "justMyCode": false
         }
