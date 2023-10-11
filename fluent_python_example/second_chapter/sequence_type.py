@@ -1,3 +1,5 @@
+import pdb
+
 from collections import abc
 
 issubclass(tuple, abc.Sequence)
@@ -33,7 +35,7 @@ except TypeError:
 方式1: 并行赋值
 方式2: * 拆包
 """
-a, b, c  = tm
+a, b, c = tm
 d = *range(5), 6
 
 metro_areas = [
@@ -63,3 +65,33 @@ for metro_area in metro_areas:
             print(f"use match/case return {name=!r} {coord=}")
 
 # 切片
+list_example = [1,2,3,4,5,6]
+print(list_example[::-3])
+print(list_example[:3])
+
+# 多维切片和省略号
+"""
+numpy创建的2纬数组, 可以通过多维切片的方式 例二维数组aa, aa[i:j, k:l]
+省略号 (...) python解释器把它识别为一个记号, 省略号是ellipsis对象的别名
+"""
+type(...)
+
+ # 为切片赋值
+l = list(range(10))
+l[3:5] = [20, 30]
+del l[8:9]
+l[3::2] = [11, 22, 33]
+l[:3] = [100]
+
+sr = 'IM GOD'
+
+# 使用 + 和 * 号处理序列
+lista = [1, 23]
+listb = [4, 56]
+listc = lista + listb
+listd = lista * 3
+
+# 如果a * n 创建多重列表, 如果a中包含可变项, 嵌套的引用会指向同一个列表, 如果进行赋值, 那么这三个
+# 嵌套列表将会是相同的, 因为它们引用相同 是同一个对象
+
+# 2.8.1 创建嵌套列表
