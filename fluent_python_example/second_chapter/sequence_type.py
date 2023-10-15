@@ -95,3 +95,55 @@ listd = lista * 3
 # 嵌套列表将会是相同的, 因为它们引用相同 是同一个对象
 
 # 2.8.1 创建嵌套列表
+board = [['_'] * 3 for _ in range(3)]
+print(board)
+board[1][2] = 'X'
+print(board)
+# board 本质: 创建了3个新的列表
+n_board = []
+for _ in range(3):
+    row = ['_'] * 3
+    n_board.append(row)
+
+weird_board = [['_'] * 3] * 3
+print(weird_board)
+weird_board[1][2] = 'X'
+print(weird_board)
+
+# weird_board 本质: 同一个列表被追加了3次
+row = ['_'] * 3
+w_board = []
+for _ in range(3):
+    w_board.append(row)
+
+# 2.8.2 增量运算符处理序列
+"""
+对于可变序列来说, 如果实现了__iadd__ 或者__imul__方法, 那么 += , *= 实现方式为__iadd__ 或者__imul__ (行为类似a.extend(b))
+这样a对象是不变的, 只是追加了元素。 如果没有实现上诉方法，则调用的是__add__ , __mul__ , 会产生一个新的序列对象
+"""
+list_example = [1, 2, 3]
+print(f"{id(list_example)=}")
+list_example *= 2
+print(f"{id(list_example)=}") 
+
+tuple_example = (1,2,3)
+print(f"{id(tuple_example)=}")
+tuple_example *= 2
+print(f"{id(tuple_example)=}")
+# 对于不可变序列, 解释器是复制了整个目标序列, 创建了一个新的序列, 包含了要拼接的项
+# ! 不可变序列拼接效率低下
+# ! 字符串例外, 由于经常使用+= 拼接字符串, CPython 对这个情况做了优化, 内存为str分配空间时会留有富余, 因此拼接字符串无须每次都复制整个字符串
+
+str_example = 'I am'
+print(f"{id(str_example)=}")
+str_example += 'M'
+print(f"{id(str_example)=}")
+str_example += 'god'
+print(f"{id(str_example)=}")
+
+# 2.8.3 一个+= 运算符复制的谜题
+t2 = (1, 2, [10, 20])
+try:
+    t2[2] += [30, 40]
+except TypeError as e:
+    print(e)
