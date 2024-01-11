@@ -3,6 +3,7 @@ from random import choice
 
 Card = namedtuple('cards', ['suit', 'rank'])
 
+
 class FrenchCards:
     suits = "Club Diamond Heart Spade".split()
     ranks = [i for i in range(2, 11)] + list("JQKA")
