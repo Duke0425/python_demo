@@ -11,8 +11,9 @@ issubclass(list, abc.MutableSequence)
 
 string = 'adb'
 codes = [string for string in string]
-codes = [last:= s for s in string] # 海象运算符: 赋值的变量在列表推导式或者生成器表达式返回后可以访问
-# 3. genexps 生成器表达式 generator expression: 使用表达式可以描述可节省内存值
+codes = [last:= s for s in string] # 海象运算符: 赋值的变量在列表推导式或者生成器表达式返回后可以访问 python3.8
+# 3. genexps 生成器表达式 generator expression: 使用表达式可以描述可节省内存值, 对比于与列表推导式, 只是将方括号转换成了圆括号
+
 tuple(s for s in string) 
 
 # 4.元组: 不仅仅是不可变列表, 还可用作没有字段名称的记录/ 相同长度的元组, 相较于列表,占用的内存更小
@@ -147,3 +148,29 @@ try:
     t2[2] += [30, 40]
 except TypeError as e:
     print(e)
+
+# 2.10.4 双端队列
+"""
+旨在快速地在两端插入或者删除项
+! 注意: 双端队列优化的是两端删除添加项的速度, 从deque对象中部删除项的速度不快
+如果设置maxlen , 那么deque在操作中将始终保持最大长度, 如果左边进入元素超出限制, 则右端则会pop 
+"""
+
+from collections import deque
+def deque_test():
+    dq = deque(range(10), maxlen=10)
+    # dq = deque(range(10))
+    dq.rotate(3)
+    print(f'{dq=}')
+    dq.rotate(-4)
+    print(f'{dq=}')
+    dq.appendleft(-1)
+    print(f'{dq=}')
+    dq.extend([11, 12, 13])
+    print(f'{dq=}')
+    dq.extendleft([10, 20, 30, 40])
+    print(f'{dq=}')
+
+
+if __name__ == '__main__':
+    deque_test()
