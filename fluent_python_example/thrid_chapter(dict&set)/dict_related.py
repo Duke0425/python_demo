@@ -157,7 +157,39 @@ class CusDict(UserDict):
 types模块提供的MappingProxyType是一个包装类,把传入的映射包装成一个mappingproxy实例,
 这是原映射的动态代理,只可读取. 
 """
+def use_not_modify_mapping_type():
+    from types import MappingProxyType
+    d1 = {'A': 1}
+    mappingProxyType = MappingProxyType(d1)
+    print(mappingProxyType['A'])
+    try:
+        mappingProxyType['A'] = 3
+    except Exception as e:
+        print(e)
 
+# 3.8 字典视图
+"""
+.values()  
+.items()
+.keys()
+都是字典的只读视图, values()最为简单, 只实现了__len__. __iter__, __reversed__这三个特殊方法
+dict_keys dict_items 还实现了多个集合方法
+"""
+
+# 3.9 dict实现方式对于实践的影响
+"""
+1.键必须是可哈希的对象,
+2. 通过键来访问值非常快, 因为Python 通过计算所得哈希码就可以直接定位键
+3. Cpython3.6中, dict的内存布局更加紧凑,顺带的一个副作用就是键的顺序得以保留,
+4. 尽管采用了更加紧凑的布局, 但是dict仍然占用大量内存, 这是不可避免的,
+5. 为了节省内存,不要在__init__之外创建实例属性.
+
+类的实例可以共用一个哈希表, 随类仪器存储, 如果新实例与__init__返回的第一个实例拥有相同的属性名称, 那么新实例的__dict__属性就共享
+这个哈希表,仅以指针数组的形式存储新实例的属性值. __init__方法执行完毕后再添加实例属性, Python就会为这个实例创建一个新的__dict__哈希表
+PEP412: 这种优化可将面向对象程序内存使用量减少10~20%
+"""
+
+# 3.10 集合论
 
 if __name__ == '__main__':
     # dial_dict = dict_derived_formula()
@@ -166,4 +198,5 @@ if __name__ == '__main__':
     # hash_map()
     # use_defaultdict()
     # use_chain_map()
-    use_counter()
+    # use_counter()
+    use_not_modify_mapping_type()
