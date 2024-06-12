@@ -1,0 +1,43 @@
+from kivy.app import App
+from kivy.graphics import Line, Rectangle, Color
+from kivy.uix.widget import Widget
+from kivy.metrics import dp, pt, mm, cm, sp
+from kivy.metrics import Metrics
+
+"""
+Size and position metrics¶
+Kivy’s default unit for length is the pixel, all sizes and positions are expressed in it by default. You can express them in other units, which is useful to achieve better consistency across devices (they get converted to the size in pixels automatically).
+
+Available units are pt, mm, cm, inch, dp and sp. You can learn about their usage in the metrics documentation.
+
+You can also experiment with the screen usage to simulate various devices screens for your application.
+
+PPI是一英寸设备中可计算的像素数。
+"""
+
+class TestApp(App):
+    def build(self):
+        density = Metrics.density
+        dpi = Metrics.dpi
+        dpi_rounded = Metrics.dpi_rounded
+        fontscale = Metrics.fontscale
+
+        widget = Widget()
+        # Create texture
+        # Draw lines with the texture
+        with widget.canvas:
+            Color(1,0,0,1)
+            Line(points=(200,200, 300, 200),  width= 0.25)
+
+            Color(0,0,1,1)
+            Rectangle(size=(2,2), pos = (250,300))
+
+            Color(0,0,1,1)
+            Line(points=(200,300, 300, 300),  width= 1)
+
+            Color(1,0,0,1)
+            Rectangle(size=(1,1), pos = (250,200))
+        return widget
+       
+if __name__ == "__main__":    
+    TestApp().run()
