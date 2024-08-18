@@ -1,0 +1,65 @@
+Matty:
+    orientation:'vertical'
+    BoxLayout:
+        orientation: 'horizontal'
+        BoxLayout:
+            id: box
+        BoxLayout:
+    # StackLayout:
+    #     orientation: 'bt-rl'
+    #     size_hint: None, None
+    #     size: self.parent.width * 0.5 , self.parent.width * 0.5
+    #     BoxLayout:
+    #         id: box
+    #         size_hint: None, None
+    #         size: self.parent.width * 0.6, self.parent.width * 0.6
+    #         canvas.before:
+    #             Color:
+    #                 rgba: 0.101, 0.101, 0.101, 1
+    #             Rectangle:
+    #                 pos: self.pos
+    #                 size: self.size
+    #     BoxLayout:
+    #         id: top_box
+    #         size_hint: None, None
+    #         size: self.parent.width * 0.6, self.parent.width * 0.4
+    #         canvas.before:
+    #             Color:
+    #                 rgba: 0, 0, 1, 1
+    #             Rectangle:
+    #                 pos: self.pos
+    #                 size: self.size
+    #     BoxLayout:
+    #         id: left_box
+    #         size_hint: None, None
+    #         size: self.parent.width * 0.4, self.parent.width * 0.6
+    #         canvas.before:
+    #             Color:
+    #                 rgba: 0, 1, 0.101, 1
+    #             Rectangle:
+    #                 pos: self.pos
+    #                 size: self.size
+    #     Widget:
+    #         canvas.before:
+    #             Color:
+    #                 rgba: 1, 0.101, 0.101, 1
+    #             Rectangle:
+    #                 pos: self.pos
+    #                 size: self.size
+    BoxLayout:
+        size_hint_y: None
+        height: 30
+        orientation: 'horizontal'
+        Button:
+            text: "dis normal"
+            multiline: False
+            on_release: root.dis_2d_image_test()
+        Button:
+            text: "dis left img"
+            on_release: root.dis_left_image()
+        Button:
+            text: "dis the 2D image"
+            on_release: root.dis_2d_image()
+        Button:
+            text: "dis top img"
+            on_release: root.dis_top_image()

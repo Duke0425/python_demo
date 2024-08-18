@@ -1,0 +1,23 @@
+CusBoxLayout:
+    orientation: 'vertical'
+    canvas.before:
+        Color:
+            rgba: 1,1,1,1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        id: button_box
+        height:50
+        size_hint: 1, None
+        Button:
+            text: 'remove'
+    FloatLayout:
+        id: image_float
+        height: 200
+        canvas.before:
+            Color:
+                rgba: 0, 0, 0, 1
+            Line:
+                width: 1
+                points: self.parent.x, self.parent.y, self.parent.right, self.parent.y
