@@ -1,0 +1,19 @@
+AnchorLayout:
+    anchor_x: 'center'
+    anchor_y: 'center'
+    Label:
+        bold: True
+        size_hint: None, None
+        size: 100, 40
+        text: "TEST CODE ABCXDDD"
+        text_size: self.size
+        shorten: True
+        shorten_from: 'right'
+        halign: 'center'
+        valign: "middle"
+        canvas.before:
+            Color:
+                rgba: 1, 0, 0, 0.2
+            Line:
+                width: 1
+                rectangle: self.x, self.y, self.width, self.height
