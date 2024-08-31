@@ -1,11 +1,10 @@
-from prime import is_prime, NUMBERS
+from fluent_python_example.nineteen_chapter.selfbuilt_processingpool.prime import is_prime, NUMBERS
 from time import perf_counter
 from typing import NamedTuple
 
 class Result(NamedTuple):
     prime: bool
     elapsed: str
-
 
 def check(num):
     start_time = perf_counter()
