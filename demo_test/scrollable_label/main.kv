@@ -1,0 +1,24 @@
+CusGridLayout:
+    size_hint: None, None
+    size: 500, 200
+    cols: 3
+
+    Button:
+        text:'20241151asdf'
+        on_release: root.StopAnimation()
+    Label:
+        id: middle_text
+        text: 'flip_angle_sweep_1_recon_10'
+        text_size: self.size
+        valign: 'middle'
+        halign: 'center'
+        shorten: True
+        canvas.before:
+            Color:
+                rgba: 1, 0.13, 0.13, 0.2
+            Rectangle:
+                pos: self.pos
+                size: self.size
+    Button:
+        text: 'tailefkosadfcmcm1'
+        on_release: root.TriggerAnimation()

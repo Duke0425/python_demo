@@ -24,7 +24,7 @@ async def supervizor() -> str:
     return result
 
 def main() -> None:
-    result = asyncio.run(supervizor())
+    result = asyncio.run(supervizor()) 
     print(f"Answer: {result}")
 
 if __name__ == '__main__':

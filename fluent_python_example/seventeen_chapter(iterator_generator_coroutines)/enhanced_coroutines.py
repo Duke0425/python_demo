@@ -2,7 +2,8 @@
     经典协程:
     协程其实就是生成器函数, 通过主体中含有yield关键字的函数创建, 协程对象就是生成器对象.
 """
-from typing import Iterator, Generator
+from typing import Iterator, Generator, NamedTuple, Union
+from collections.abc import Generator
 
 readings: Iterator[float]
 # sim_taxi: Generator[Event, float, int]
@@ -19,6 +20,34 @@ readings: Iterator[float]
      如果想要显式终止协程, 可以调用.close()方法
 """
 
+class Sentinel:
+    def __repr__(self) -> str:
+        return r'<Sentinel>'
+
+
+class Result(NamedTuple):
+    count: int
+    average: int
+
+
+SendTyple = Union[float, Sentinel]
+
+def averager_func(aVerbose: bool) -> Generator[None, SendTyple, Result]:
+    total = 0
+    count = 0
+    average = 0
+    while True:
+        term = yield
+        if aVerbose:
+            print("received:", term)
+        if isinstance(term, Sentinel):
+            print("Get Sentinel, Now Ending")
+            break
+        total += term
+        count += 1
+        average = total / count
+    return Result(count = count, average = average)
+
 def averager() -> Generator[float, float, None]:
     total = 0
     count = 0
@@ -29,8 +58,7 @@ def averager() -> Generator[float, float, None]:
         count += 1
         average = total / count
 
-
-def main():
+def use_coroutine_cal_average():
     calGen = averager()
     next(calGen) # 预激协程， 或者使用.send(None) 进行激活. send只能在yield处暂停时接受发送的值.
 
@@ -38,6 +66,26 @@ def main():
     b = calGen.send(50)
     c = calGen.send(0)
     print(a, b, c)
+
+def us_coroutine_cal_average_and_return():
+    calGen = averager_func(aVerbose=True)
+
+    next(calGen) # 预激协程， 或者使用.send(None) 进行激活. send只能在yield处暂停时接受发送的值.
+
+    a = calGen.send(10)
+    b = calGen.send(50)
+    c = calGen.send(0)
+    try:
+        calGen.send(Sentinel())
+    except StopIteration as e:
+        result = e.value
+
+    print(a, b, c, result)
+
+def main():
+    # use_coroutine_cal_average()
+    us_coroutine_cal_average_and_return()
+
 
 if __name__ == '__main__':
     main()

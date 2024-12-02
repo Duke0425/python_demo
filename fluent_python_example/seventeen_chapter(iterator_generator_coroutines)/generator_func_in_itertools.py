@@ -1,6 +1,7 @@
 """
 1. 用于筛选的基础生成器函数
 """
+from itertools import pairwise
 from threading import stack_size
 
 
@@ -206,6 +207,79 @@ class CombinationGeneratorClass:
 # from itertools import cycle, pairwise, permutations, repeat
 
 """
+class ExpandsionGeneratorClass:
+
+    @classmethod
+    def test_func(cls):
+        # cls.use_itertools_combinations()
+        # cls.use_itertools_combinations_with_replacement()
+        # cls.use_itertools_cycle()
+        # cls.use_itertools_pairwise()
+        cls.use_itertools_permutations()
+
+    @staticmethod
+    def use_itertools_combinations():
+        """
+        combinations(it, r) 接受一个迭代对象, 将其组合成所有可能得元组(数字或字母序列或集合) r参数表示不同组合的大小
+        """
+        from itertools import combinations
+        print(list(combinations("ABCD", 3))) # [('A', 'B', 'C'), ('A', 'B', 'D'), ('A', 'C', 'D'), ('B', 'C', 'D')]
+        print(list(combinations("ABCD", 1))) # [('A',), ('B',), ('C',), ('D',)]
+
+    @staticmethod
+    def use_itertools_combinations_with_replacement():
+        """
+        combinations_with_replacement(it, r) 与itertools.combinations 区别与, 此方法可以中的元素可以重复
+        """
+        from itertools import combinations_with_replacement
+        print(list(combinations_with_replacement("ABD", 3))) 
+        """
+        [('A', 'A', 'A'), ('A', 'A', 'B'), ('A', 'A', 'C'), ('A', 'A', 'D'), ('A', 'B', 'B'), ('A', 'B', 'C'), ('A', 'B', 'D'), ('A', 'C', 'C'), ('A', 'C', 'D'), ('A', 
+'D', 'D'), ('B', 'B', 'B'), ('B', 'B', 'C'), ('B', 'B', 'D'), ('B', 'C', 'C'), ('B', 'C', 'D'), ('B', 'D', 'D'), ('C', 'C', 'C'), ('C', 'C', 'D'), ('C', 'D', 'D'), ('D', 'D', 'D')]
+[('A',), ('B',), ('C',), ('D',)]
+        """
+
+    @staticmethod
+    def use_itertools_cycle():
+        """
+        cycle(it) 接受一个参数为输入, 为可迭代对象
+        遍历输入参数的每个元素并且产出, 然后重复玄幻共生产参数的无限序列, 该函数返回一个生成器对象
+        """
+        from itertools import cycle
+        inputList = [1, 2, 3, 4]
+        inputGen = cycle(inputList)
+        for _ in range(10):
+            print(next(inputGen))
+
+    @staticmethod
+    def use_itertools_pairwise():
+        """
+        pairwise(it) 接受一个参数为输入, 为可迭代对象
+        返回从输入可迭代对象中获取的连续重叠对-> 返回为一个生成器
+        """
+        from itertools import pairwise
+        print(list(pairwise([1, 2, 4, 5, 5]))) # [(1, 2), (2, 4), (4, 5), (5, 5)]
+
+    @staticmethod
+    def use_itertools_permutations():
+        """
+        permutations(it, r=None) 根据iterable 返回连续的r长度元素的排列
+        列元组是根据输入的 iterable 的顺序以词典排序的形式发出的。 如果输入的 iterable 是已排序的，则输出的元组将按已排序的顺序产生。
+        """
+        from itertools import permutations
+        print(list(permutations("ABCD", 3)))
+        """
+        [('A', 'B', 'C'), ('A', 'B', 'D'), ('A', 'C', 'B'), ('A', 'C', 'D'), ('A', 'D', 'B'), ('A', 'D', 'C'), ('B', 'A', 'C'), ('B', 'A', 'D'), ('B', 'C', 'A'), ('B', 'C', 'D'), ('B', 'D', 'A'), ('B', 
+'D', 'C'), ('C', 'A', 'B'), ('C', 'A', 'D'), ('C', 'B', 'A'), ('C', 'B', 'D'), ('C', 'D', 'A'), ('C', 'D', 'B'), ('D', 'A', 'B'), ('D', 'A', 'C'), ('D', 'B', 'A'), ('D', 'B', 'C'), ('D', 'C', 'A'), ('D', 'C', 'B')]
+        """
+
+    @staticmethod
+    def use_itertools_repeat():
+        """
+        repeat(object[,times]) 常见一个持续返回Object的迭代器, 将会无限期运行除非指定了times参数
+        """
+        
+
 
 """
 5. 用于重新排列元素的生成器函数
@@ -217,7 +291,8 @@ reversed
 def main():
     # FilterGeneratorClass.test_func()
     # MappingGeneratorClass.test_func()
-    CombinationGeneratorClass.test_func()
+    # CombinationGeneratorClass.test_func()
+    ExpandsionGeneratorClass.test_func()
 
 if __name__ == '__main__':
     main()

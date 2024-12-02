@@ -190,6 +190,24 @@ PEP412: 这种优化可将面向对象程序内存使用量减少10~20%
 """
 
 # 3.10 集合论
+"""
+set 没有字面量, 如果要创建一个空集合 只能使用 set()
+"""
+class SetSimpleMethod:
+
+    def __init__(self) -> None:
+        self.mySetA = set("ABCS")
+        self.mySetB = {'A', 'b'}
+
+    def use_union_set(self):
+        result = self.mySetA.union(self.mySetB)
+        print(result, self.mySetA)
+
+    def use_dict_keys(self):
+        simpleDict = {'A':1, 'B':2}
+        setResult = simpleDict.keys() & self.mySetA
+        print(setResult)
+
 
 if __name__ == '__main__':
     # dial_dict = dict_derived_formula()
@@ -199,4 +217,6 @@ if __name__ == '__main__':
     # use_defaultdict()
     # use_chain_map()
     # use_counter()
-    use_not_modify_mapping_type()
+    # use_not_modify_mapping_type()
+    SetSimpleMethod().use_union_set()
+    SetSimpleMethod().use_dict_keys()
