@@ -1,4 +1,5 @@
 import xlsxwriter
+import time
 
 CommonSheetNameList = [
     "第1筒次010段_12345",
@@ -81,7 +82,7 @@ class ExcelWriter:
             col += 1
 
         row = aRow + 1
-        while row < 200:
+        while row < 10000:
             col = 0
             for values in RockInfoDict.values():
                 self.myWorksheet.write(row, col, values, self.myContentFormat)
@@ -89,9 +90,11 @@ class ExcelWriter:
             row += 1
 
 def main():
+    start_time = time.time()
     excelWriter = ExcelWriter(ExcelPath, CommonSheetNameList[0])
     excelWriter.origanizedData()
     excelWriter.close()
+    print("--- %s seconds ---" % (time.time() - start_time))
 
 
 if __name__ == '__main__':
