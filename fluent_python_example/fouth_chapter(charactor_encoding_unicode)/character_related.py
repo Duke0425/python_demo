@@ -46,6 +46,7 @@ NFKC 和NFKD 会兼容性分解字符, 替换成一个或者多个字符. 比如
 大小同一化: str.casefold() 与 str.lower() 类似, 只有德语中sharps 和希腊字母μ不同
 
 4.8 对Unicode字符进行排序
+4.9 Unicode字符库
 """
 
 
@@ -107,6 +108,9 @@ class StringMatch:
         return unicodedata.normalize("NFC", str_one).casefold() == \
             unicodedata.normalize("NFC", str_two).casefold()
 
+    def get_name(self, str_one: str):
+        return unicodedata.name(str_one)
+
 
 def main():
     string = 'Duke'
@@ -122,6 +126,7 @@ def main():
     stringMatch = StringMatch()
     print(stringMatch.nfc_equals(spanish_cafe, spanish_cafe_one))
     print(stringMatch.case_fold_equals(spanish_cafe, spanish_cafe_one))
+    print(stringMatch.get_name("é"))
 
 
 

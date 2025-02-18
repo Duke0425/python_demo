@@ -64,8 +64,8 @@ def ComputeTime(time_str):
     times = time_str.split('\n')
     times = [ConvertToMinutes(t.split(':')) for t in times]
 
-    point1_time = ConvertToMinutes([12, 0])
-    point2_time = ConvertToMinutes([13, 30])
+    point1_time = ConvertToMinutes([11, 45])
+    point2_time = ConvertToMinutes([13, 00])
 
     early_time_begin = ConvertToMinutes([6, 30])
     early_time_end = ConvertToMinutes([8, 30])
