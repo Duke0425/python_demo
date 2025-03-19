@@ -48,15 +48,42 @@ class SimpleArgsParser:
             help = 'show congra'
         )
 
+import multiprocessing
+import os
+import psutil
+import time
+
+def worker(p_core=True):
+    """ 绑定进程到 P-Core 或 E-Core 并执行计算 """
+    while True:
+        pid = win32api.GetCurrentProcessId()
+        # print(pid)
+        time.sleep(2)
+        print(f"进程 {os.getpid()} 运行在 {'P-Core' if p_core else 'E-Core'}")
+
+
+import win32api, win32process, win32con
+def updatePriorityClass():
+
+    pid = win32api.GetCurrentProcessId()
+    handle = win32api.OpenProcess(win32con.PROCESS_ALL_ACCESS, True, pid)
+    win32process.SetPriorityClass(handle, win32process.ABOVE_NORMAL_PRIORITY_CLASS)
 
 
 if __name__ == '__main__':
     print("You passed the following arguments: ")
     print(sys.argv)
 
+    updatePriorityClass()
+    p_process = multiprocessing.Process(target=worker, args=(True,))
+    p_process.start()
     simpleArgsParser = SimpleArgsParser()
     simpleArgsParser.set_argparse()
-
+    import time
+    while True:
+        print(win32api.GetCurrentProcessId())
+        time.sleep(2)
+    p_process.join()
     args = simpleArgsParser.myParser.parse_args()
 
     print(f"args parameters {args.__dict__}")
